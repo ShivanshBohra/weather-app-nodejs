@@ -1,9 +1,10 @@
-const http = require('http');
-const fs = require("fs");
-const path = require("path");
-const requests = require('requests');
+import http from 'http';
+import fs from 'fs';
+import path from 'path';
+import requests from 'requests';
 
-const homeFile = fs.readFileSync("home.html", "utf-8");
+const homeFilePath = path.join(__dirname, '..', 'public', 'home.html');
+const homeFile = fs.readFileSync(homeFilePath, "utf-8");
 
 const replaceVal = (tempVal, orgVal) => {
     let temperature = tempVal.replace("{%tempval%}", orgVal.main.temp);
@@ -18,11 +19,11 @@ const replaceVal = (tempVal, orgVal) => {
 
 
 const server = http.createServer((req, res) => {
-     if (req.url.match(/\.(css)$/)) {
-        const cssPath = path.join(__dirname, req.url);
-        const fileStream = fs.createReadStream(cssPath, "UTF-8");
-        
-        res.writeHead(200, { "Content-Type": "text/css" });
+    if (req.url.match(/\.(css|js)$/)) {
+        const filePath = path.join(__dirname, '..', 'public', req.url);
+        const fileStream = fs.createReadStream(filePath, 'UTF-8');
+
+        res.writeHead(200, { 'Content-Type': req.url.endsWith('.css') ? 'text/css' : 'text/javascript' });
         fileStream.pipe(res);
         return;
     }

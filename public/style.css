@@ -17,11 +17,7 @@ body {
 }
 
 
-#weathercon {
-    text-align: center;
-    font-size: 50px;
-    margin-top: 20px;
-}
+
 
 .info {
     text-align: center;
@@ -47,3 +43,24 @@ body {
     margin-top: 10px;
     color: #f39c12;
 }
+#weathercon {
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+  }
+
+  #weathercon .fas {
+    font-size: 6rem;
+    animation: fas-anime 3s linear infinite alternate;
+  }
+
+  @keyframes fas-anime {
+    from {
+      transform: scale(1.1);
+    }
+    to {
+      transform: scale(1.3);
+    }
+  }
