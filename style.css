@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #FFFFEC;
+}
+
+.box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 300px;
+    width: 300px; 
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+
+#weathercon {
+    text-align: center;
+    font-size: 50px;
+    margin-top: 20px;
+}
+
+.info {
+    text-align: center;
+    padding: 20px;
+}
+
+.location {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+#date {
+    color: #555;
+}
+
+.temp {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #f39c12;
+}
+.tempmin_max{
+    font-size: 20px;
+    margin-top: 10px;
+    color: #f39c12;
+}
