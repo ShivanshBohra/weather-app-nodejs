@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require("fs");
-var requests = require('requests');
+const path = require("path");
+const requests = require('requests');
 
 const homeFile = fs.readFileSync("home.html", "utf-8");
 
@@ -17,9 +18,18 @@ const replaceVal = (tempVal, orgVal) => {
 
 
 const server = http.createServer((req, res) => {
+     if (req.url.match(/\.(css)$/)) {
+        const cssPath = path.join(__dirname, req.url);
+        const fileStream = fs.createReadStream(cssPath, "UTF-8");
+        
+        res.writeHead(200, { "Content-Type": "text/css" });
+        fileStream.pipe(res);
+        return;
+    }
+
     if (req.url == "/") {
         requests(
-            'https://api.openweathermap.org/data/2.5/weather?q=Pune&appid=bafd029653218f7f7c6668443dc86d87'
+            'https://api.openweathermap.org/data/2.5/weather?q=Delhi&appid=bafd029653218f7f7c6668443dc86d87'
         )
             .on('data', (chunk) => {
                 const objdata = JSON.parse(chunk);
