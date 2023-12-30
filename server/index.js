@@ -1,7 +1,7 @@
-import http from 'http';
-import fs from 'fs';
-import path from 'path';
-import requests from 'requests';
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const requests = require('requests');
 
 const homeFilePath = path.join(__dirname, '..', 'public', 'home.html');
 const homeFile = fs.readFileSync(homeFilePath, "utf-8");
